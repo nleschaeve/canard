@@ -2,6 +2,8 @@ package canard.model;
 
 import canard.model.cancan.ComportementCancan;
 import canard.model.vol.ComportementVol;
+import canard.model.vol.NePasVoler;
+import canard.model.vol.VolerAvecDesAiles;
 
 public class Canard {
 	private String nom;
@@ -26,6 +28,18 @@ public class Canard {
 	
 	public String effectuerCancan() {
 		return comportementCancan.cancaner();
+	}
+	
+	public void changerComportementVol(ComportementVol comportementVol) {
+		if ("Je vole !".equals(comportementVol.voler())) {
+			comportementVol = new NePasVoler();
+		} else {
+			comportementVol = new VolerAvecDesAiles();
+		}
+	}
+	
+	public void changerComportementCancan(ComportementCancan comportementCancan) {
+		this.comportementCancan = comportementCancan;
 	}
 
 	public String getNom() {
